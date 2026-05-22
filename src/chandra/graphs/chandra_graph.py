@@ -21,7 +21,7 @@ from chandra.graphs.nodes import (
     persist,
 )
 from chandra.graphs.state import ChandraState
-from chandra.logging import get_logger
+from chandra.logger import get_logger
 
 logger = get_logger(__name__)
 
@@ -90,7 +90,8 @@ def build_graph(checkpointer: Any | None = None) -> Any:
         graph.add_edge(f"observe_{kra}", "analyze")
 
     graph.add_edge("analyze", "compose_briefing")
-    graph.add_edge("compose_briefing", "persist")
+    graph.add_edge("compose_briefing", "persist" \
+    "")
     graph.add_edge("persist", END)
 
     saver = checkpointer if checkpointer is not None else _build_checkpointer()

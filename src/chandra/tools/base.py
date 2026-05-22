@@ -26,7 +26,7 @@ from botocore.exceptions import BotoCoreError, ClientError
 
 from chandra.aws.client_factory import AwsClientFactory, get_default_factory
 from chandra.briefing.schemas import Finding
-from chandra.logging import get_logger
+from chandra.logger import get_logger
 
 logger = get_logger(__name__)
 

@@ -5,7 +5,7 @@ from __future__ import annotations
 from functools import lru_cache
 
 from chandra.aws.client_factory import AwsClientFactory, get_default_factory
-from chandra.logging import get_logger
+from chandra.logger import get_logger
 
 logger = get_logger(__name__)
 

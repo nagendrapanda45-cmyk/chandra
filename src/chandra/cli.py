@@ -22,7 +22,7 @@ from chandra.config import settings
 from chandra.db.models import Briefing, Run
 from chandra.db.session import session_scope
 from chandra.graphs.chandra_graph import build_graph
-from chandra.logging import get_logger
+from chandra.logger import get_logger
 
 app = typer.Typer(
     name="chandra",

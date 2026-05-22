@@ -27,7 +27,7 @@ from chandra.briefing.schemas import (
     Scorecard,
 )
 from chandra.config import settings
-from chandra.logging import get_logger
+from chandra.logger import get_logger
 
 logger = get_logger(__name__)
 
@@ -269,7 +269,7 @@ def render_markdown(
     *,
     run_id: str,
     account_id: str,
-    scorecard: dict[str, int],
+    scorecard: dict[str, int] | Any,
     executive_summary: list[str],
     top_findings: list[AnalyzedFinding],
     all_findings: list[Finding],
@@ -277,6 +277,8 @@ def render_markdown(
     previous_scorecard: dict[str, int] | None = None,
 ) -> tuple[str, dict[str, Any]]:
     """Render the briefing as both markdown and a structured JSON payload."""
+    if hasattr(scorecard, "model_dump"):
+        scorecard = scorecard.model_dump()
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     lines: list[str] = []
     lines.append(f"# Cloud Health Briefing — {account_id} — {today}")

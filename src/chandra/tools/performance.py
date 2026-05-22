@@ -14,7 +14,7 @@ from datetime import datetime, timedelta, timezone
 from typing import Any
 
 from chandra.briefing.schemas import Finding
-from chandra.logging import get_logger
+from chandra.logger import get_logger
 from chandra.tools.base import DetectorContext, detector_guard, paginate
 
 logger = get_logger(__name__)
